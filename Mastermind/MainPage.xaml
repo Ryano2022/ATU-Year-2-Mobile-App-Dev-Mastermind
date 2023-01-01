@@ -51,10 +51,23 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <BoxView Color="Red" Grid.Row="0" Grid.Column="0" CornerRadius="1000" />
+                <BoxView Color="Red" Grid.Row="0" Grid.Column="0" CornerRadius="30" />
             </Grid>
 
         </Frame>
+
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="10" >
+
+            <Button x:Name="BtnConfirm" Clicked="BtnConfirm_Clicked"
+                    Text="Confirm Guess" BorderWidth="2" BorderColor="AliceBlue"
+                    IsVisible="False" />
+
+            <Label x:Name="LblTest" />
+            <Label x:Name="LblTest2" />
+            <Label x:Name="LblTest3" />
+            <Label x:Name="LblTest4" />
+
+        </HorizontalStackLayout>
 
     </VerticalStackLayout>
 
