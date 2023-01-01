@@ -10,7 +10,7 @@
         <HorizontalStackLayout HorizontalOptions="Center" Margin="10" >
             <Label Text="Mastermind" Margin="5, 1, 15, 1"
                        FontSize="Medium" FontAttributes="Bold"
-                       VerticalOptions="Center" HorizontalOptions="Start" />
+                       VerticalOptions="Center" />
 
             <Button x:Name="BtnRestart" Clicked="BtnRestart_Clicked" Margin="0, 0, 10, 0"
                         Text="Restart" BorderWidth="2" BorderColor="AliceBlue" />
