@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mastermind.MainPage">
+
+    <VerticalStackLayout HorizontalOptions="Fill"
+                         VerticalOptions="Fill"
+                         Background="LightBlue">
+
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="10" >
+            <Label Text="Mastermind" Margin="5, 1, 15, 1"
+                       FontSize="Medium" FontAttributes="Bold"
+                       VerticalOptions="Center" HorizontalOptions="Start" />
+
+            <Button x:Name="BtnRestart" Clicked="BtnRestart_Clicked" Margin="0, 0, 10, 0"
+                        Text="Restart" BorderWidth="2" BorderColor="AliceBlue" />
+
+            <Button x:Name="BtnSave" Clicked="BtnSave_Clicked"
+                        Text="Save" BorderWidth="2" BorderColor="AliceBlue" />
+
+        </HorizontalStackLayout>
+        
+        <Rectangle Fill="White" HeightRequest="5" Margin="30, -5, 30, 20" />
+        
+        <Frame BackgroundColor="Grey" BorderColor="Grey"
+               WidthRequest="400" HeightRequest="700" >
+            
+            <Grid x:Name="GridGame" BackgroundColor="LightGrey"
+                  RowSpacing="10" ColumnSpacing="10">
+
+                <!-- 10 Rows -->
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <!-- 06 Columns -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <BoxView Color="Red" Grid.Row="0" Grid.Column="0" CornerRadius="1000" />
+            </Grid>
+
+        </Frame>
+
+    </VerticalStackLayout>
+
+</ContentPage>
