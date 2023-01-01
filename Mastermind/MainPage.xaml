@@ -12,12 +12,16 @@
                        FontSize="Medium" FontAttributes="Bold"
                        VerticalOptions="Center" />
 
-            <Button x:Name="BtnRestart" Clicked="BtnRestart_Clicked" Margin="0, 0, 10, 0"
-                        Text="Restart" BorderWidth="2" BorderColor="AliceBlue" />
+            <ImageButton x:Name="BtnRestart" Clicked="BtnRestart_Clicked" Margin="0, 0, 10, 0"
+                        BorderWidth="2" BorderColor="AliceBlue" Source="refresh.png" 
+                        WidthRequest="50" HeightRequest="50" />
+            <!-- Image Source = https://www.flaticon.com/free-icon/refresh_2805355?term=refresh&page=1&position=1&origin=search&related_id=2805355 -->
 
-            <Button x:Name="BtnSave" Clicked="BtnSave_Clicked"
-                        Text="Save" BorderWidth="2" BorderColor="AliceBlue" />
-
+            <ImageButton x:Name="BtnSave" Clicked="BtnSave_Clicked"
+                         BorderWidth="2" BorderColor="AliceBlue" Source="floppy_disk.png"
+                         WidthRequest="50" HeightRequest="50"/>
+            <!-- Image Source = https://www.flaticon.com/free-icon/floppy-disk_3783755?term=floppy+save&page=18&position=2&origin=search&related_id=3783755 -->
+            
         </HorizontalStackLayout>
         
         <Rectangle Fill="White" HeightRequest="5" Margin="30, -5, 30, 20" />
@@ -61,11 +65,11 @@
                     IsVisible="True" />
 
             <Label x:Name="LblCode" Text="Correct Code:"
-                   IsVisible="True" HorizontalOptions="Center"
+                   IsVisible="False" HorizontalOptions="Center"
                    Margin="0, 10, 0, 10"
                    BackgroundColor="White" TextColor="MediumPurple"/>
 
-            <HorizontalStackLayout x:Name="SLCode" IsVisible="True">
+            <HorizontalStackLayout x:Name="SLCode" IsVisible="False">
                 <BoxView x:Name="BVCode0" Color="Red" CornerRadius="30" WidthRequest="50" HeightRequest="50" Margin="0, 0, 5, 0"/>
                 <BoxView x:Name="BVCode1" Color="Red" CornerRadius="30" WidthRequest="50" HeightRequest="50" Margin="0, 0, 5, 0"/>
                 <BoxView x:Name="BVCode2" Color="Red" CornerRadius="30" WidthRequest="50" HeightRequest="50" Margin="0, 0, 5, 0"/>

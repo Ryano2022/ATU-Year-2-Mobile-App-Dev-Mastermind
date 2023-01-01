@@ -171,13 +171,13 @@ public partial class MainPage : ContentPage
 
     private void NewRow()
     {
-        for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < 4; i++) {
             BoxView BV = new BoxView();
             GridGame.Children.Add(BV);
             BV.Color = Colors.Red;
             BV.CornerRadius = 30;
             BV.SetValue(Grid.RowProperty, _rowIncrement);
-            BV.SetValue(Grid.ColumnProperty, j);
+            BV.SetValue(Grid.ColumnProperty, i);
         }
 
         if (_rowIncrement < 9) 
@@ -187,6 +187,9 @@ public partial class MainPage : ContentPage
         else
         {
             BtnConfirm.IsEnabled = false;
+            BtnConfirm.IsVisible = false;
+            LblCode.IsVisible = true;
+            SLCode.IsVisible = true;
         }
     }
 }
