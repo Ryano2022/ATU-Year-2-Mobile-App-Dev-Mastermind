@@ -50,129 +50,66 @@ public partial class MainPage : ContentPage
     {
         for (int i = 0; i < _code.Length; i++)
         {
-            int randomNum = _random.Next(1, 6);
+            int randomNum = _random.Next(0, 5);
             
             if (i == 0)
             {
                 _code[i] = randomNum;
-                if(randomNum == 0)
-                {
-                    BVCode0.Color = Colors.Red;
-                }
-                else if(randomNum == 1)
-                {
-                    BVCode0.Color = Colors.Yellow;
-                }
-                else if (randomNum == 2)
-                {
-                    BVCode0.Color = Colors.Green;
-                }
-                else if (randomNum == 3)
-                {
-                    BVCode0.Color = Colors.Blue;
-                }
-                else if (randomNum == 4)
-                {
-                    BVCode0.Color = Colors.Black;
-                }
-                else
-                {
-                    BVCode0.Color = Colors.White;
-                }
+                AssignColour(randomNum, BVCode0);
+                
             }
             else if(i == 1)
             {
                 _code[i] = randomNum;
-                if (randomNum == 0)
-                {
-                    BVCode1.Color = Colors.Red;
-                }
-                else if (randomNum == 1)
-                {
-                    BVCode1.Color = Colors.Yellow;
-                }
-                else if (randomNum == 2)
-                {
-                    BVCode1.Color = Colors.Green;
-                }
-                else if (randomNum == 3)
-                {
-                    BVCode1.Color = Colors.Blue;
-                }
-                else if (randomNum == 4)
-                {
-                    BVCode1.Color = Colors.Black;
-                }
-                else
-                {
-                    BVCode1.Color = Colors.White;
-                }
+                AssignColour(randomNum, BVCode1);
+
             }
             else if(i == 2)
             {
                 _code[i] = randomNum;
-                if (randomNum == 0)
-                {
-                    BVCode2.Color = Colors.Red;
-                }
-                else if (randomNum == 1)
-                {
-                    BVCode2.Color = Colors.Yellow;
-                }
-                else if (randomNum == 2)
-                {
-                    BVCode2.Color = Colors.Green;
-                }
-                else if (randomNum == 3)
-                {
-                    BVCode2.Color = Colors.Blue;
-                }
-                else if (randomNum == 4)
-                {
-                    BVCode2.Color = Colors.Black;
-                }
-                else
-                {
-                    BVCode2.Color = Colors.White;
-                }
+                AssignColour(randomNum, BVCode2);
             }
             else if(i == 3)
             {
                 _code[i] = randomNum;
-                if (randomNum == 0)
-                {
-                    BVCode3.Color = Colors.Red;
-                }
-                else if (randomNum == 1)
-                {
-                    BVCode3.Color = Colors.Yellow;
-                }
-                else if (randomNum == 2)
-                {
-                    BVCode3.Color = Colors.Green;
-                }
-                else if (randomNum == 3)
-                {
-                    BVCode3.Color = Colors.Blue;
-                }
-                else if (randomNum == 4)
-                {
-                    BVCode3.Color = Colors.Black;
-                }
-                else
-                {
-                    BVCode3.Color = Colors.White;
-                }
+                AssignColour(randomNum, BVCode3);
             }
         }
+    }
 
-        
+    private void AssignColour(int randomNum, BoxView BVCode)
+    {
+        if (randomNum == 0)
+        {
+            BVCode.Color = Colors.Red; 
+        }
+        else if (randomNum == 1)
+        {
+            BVCode.Color = Colors.Yellow;
+        }
+        else if (randomNum == 2)
+        {
+            BVCode.Color = Colors.Green;
+        }
+        else if (randomNum == 3)
+        {
+            BVCode.Color = Colors.Blue;
+        }
+        else if (randomNum == 4)
+        {
+            BVCode.Color = Colors.Black;
+        }
+        else
+        {
+            BVCode.Color = Colors.White;
+        }
     }
 
     private void NewRow()
     {
+        BoxView BV;
         for (int i = 0; i < 4; i++) {
-            BoxView BV = new BoxView();
+            BV = new BoxView();
             GridGame.Children.Add(BV);
             BV.Color = Colors.Red;
             BV.CornerRadius = 30;

@@ -9,17 +9,18 @@
 
         <HorizontalStackLayout HorizontalOptions="Center" Margin="10" >
             <Label Text="Mastermind" Margin="5, 1, 15, 1"
-                       FontSize="Medium" FontAttributes="Bold"
-                       VerticalOptions="Center" />
+                   FontSize="Medium" FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   BackgroundColor="White" TextColor="Black"/>
 
             <ImageButton x:Name="BtnRestart" Clicked="BtnRestart_Clicked" Margin="0, 0, 10, 0"
                         BorderWidth="2" BorderColor="AliceBlue" Source="refresh.png" 
-                        WidthRequest="50" HeightRequest="50" />
+                        WidthRequest="50" HeightRequest="50" BackgroundColor="White" />
             <!-- Image Source = https://www.flaticon.com/free-icon/refresh_2805355?term=refresh&page=1&position=1&origin=search&related_id=2805355 -->
 
             <ImageButton x:Name="BtnSave" Clicked="BtnSave_Clicked"
                          BorderWidth="2" BorderColor="AliceBlue" Source="floppy_disk.png"
-                         WidthRequest="50" HeightRequest="50"/>
+                         WidthRequest="50" HeightRequest="50" BackgroundColor="White" />
             <!-- Image Source = https://www.flaticon.com/free-icon/floppy-disk_3783755?term=floppy+save&page=18&position=2&origin=search&related_id=3783755 -->
             
         </HorizontalStackLayout>
