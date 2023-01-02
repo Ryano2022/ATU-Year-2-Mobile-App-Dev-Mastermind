@@ -16,9 +16,12 @@
 // Majority of comments will be taken from the above set of steps.
 public partial class MainPage : ContentPage
 {
-    Random _random;
+    const int _NUM_OF_ROWS = 10;
+    const int _NUM_OF_COLS = 4;
     int[] _code;
     int _rowIncrement;
+    Random _random;
+    List<BoxView> _boxviews;
 
     public MainPage()
 	{
@@ -33,19 +36,34 @@ public partial class MainPage : ContentPage
     // Complete the save and restart button functionalities.
     private void BtnRestart_Clicked(object sender, EventArgs e)
     {
+        foreach (BoxView BV in _boxviews) 
+        {
+            BV.IsVisible = false;
+        }
+
+        _boxviews.Clear(); 
+
+        _rowIncrement = 0;
+
+        BtnConfirm.IsVisible = true;
+        LblCode.IsVisible = false;
+        SLCode.IsVisible = false;
+
+        GenerateHiddenCode();
+        NewRow();
     }
 
     private void BtnSave_Clicked(object sender, EventArgs e)
     {
     }
 
+    // Confirm button at bottom to confirm their guess.
     private void BtnConfirm_Clicked(object sender, EventArgs e)
     {
         NewRow();
     }
 
     // Generate a 4 colour code. Colours can repeat.
-    // 6 Different colours. (I'll pick Red, Yellow, Green, Blue, White and Black).
     private void GenerateHiddenCode()
     {
         for (int i = 0; i < _code.Length; i++)
@@ -77,6 +95,7 @@ public partial class MainPage : ContentPage
         }
     }
 
+    // 6 Different colours. (I'll pick Red, Yellow, Green, Blue, White and Black).
     private void AssignColour(int randomNum, BoxView BVCode)
     {
         if (randomNum == 0)
@@ -105,25 +124,28 @@ public partial class MainPage : ContentPage
         }
     }
 
+    // Move to the next row on the grid every time and add some boxviews.
     private void NewRow()
     {
-        BoxView BV;
-        for (int i = 0; i < 4; i++) {
-            BV = new BoxView();
-            GridGame.Children.Add(BV);
+        if (_boxviews == null) _boxviews = new List<BoxView>();
+
+        for (int i = 0; i < _NUM_OF_COLS; i++) {
+            BoxView BV = new BoxView();
             BV.Color = Colors.Red;
             BV.CornerRadius = 30;
             BV.SetValue(Grid.RowProperty, _rowIncrement);
             BV.SetValue(Grid.ColumnProperty, i);
+            _boxviews.Add(BV);
+            GridGame.Children.Add(BV);
         }
+        
 
-        if (_rowIncrement < 9) 
+        if (_rowIncrement < (_NUM_OF_ROWS - 1)) 
         {
             _rowIncrement++;
         }
         else
         {
-            BtnConfirm.IsEnabled = false;
             BtnConfirm.IsVisible = false;
             LblCode.IsVisible = true;
             SLCode.IsVisible = true;
