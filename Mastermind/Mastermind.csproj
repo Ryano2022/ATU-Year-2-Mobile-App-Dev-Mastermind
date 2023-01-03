@@ -53,6 +53,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiImage Update="Resources\Images\floppy_disk.png">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </MauiImage>

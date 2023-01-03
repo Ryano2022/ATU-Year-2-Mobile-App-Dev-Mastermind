@@ -18,8 +18,9 @@ public partial class MainPage : ContentPage
 {
     const int _NUM_OF_ROWS = 10;
     const int _NUM_OF_COLS = 4;
+    const int _NUM_OF_COLOURS = 5;
     int[] _code;
-    int _rowIncrement;
+    int _rowIncrement, _colourNum;
     Random _random;
     List<BoxView> _boxviews;
 
@@ -29,6 +30,7 @@ public partial class MainPage : ContentPage
         _random = new Random();
         _code = new int[4];
         _rowIncrement = 0;
+        _colourNum = 1;
         GenerateHiddenCode();
         NewRow();
     }
@@ -44,6 +46,7 @@ public partial class MainPage : ContentPage
         _boxviews.Clear(); 
 
         _rowIncrement = 0;
+        _colourNum = 1;
 
         BtnConfirm.IsVisible = true;
         LblCode.IsVisible = false;
@@ -61,6 +64,7 @@ public partial class MainPage : ContentPage
     private void BtnConfirm_Clicked(object sender, EventArgs e)
     {
         NewRow();
+        _colourNum = 1;
     }
 
     // Generate a 4 colour code. Colours can repeat.
@@ -68,7 +72,7 @@ public partial class MainPage : ContentPage
     {
         for (int i = 0; i < _code.Length; i++)
         {
-            int randomNum = _random.Next(0, 5);
+            int randomNum = _random.Next(0, _NUM_OF_COLOURS);
             
             if (i == 0)
             {
@@ -129,12 +133,21 @@ public partial class MainPage : ContentPage
     {
         if (_boxviews == null) _boxviews = new List<BoxView>();
 
-        for (int i = 0; i < _NUM_OF_COLS; i++) {
+        for (int i = 0; i < _NUM_OF_COLS; i++) 
+        {
             BoxView BV = new BoxView();
             BV.Color = Colors.Red;
             BV.CornerRadius = 30;
             BV.SetValue(Grid.RowProperty, _rowIncrement);
             BV.SetValue(Grid.ColumnProperty, i);
+            
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) => 
+            {
+                ColourCycler(s);
+            };
+
+            BV.GestureRecognizers.Add(tapGestureRecognizer);
             _boxviews.Add(BV);
             GridGame.Children.Add(BV);
         }
@@ -149,6 +162,44 @@ public partial class MainPage : ContentPage
             BtnConfirm.IsVisible = false;
             LblCode.IsVisible = true;
             SLCode.IsVisible = true;
+        }
+    }
+
+    // Allow user to make a guess by tapping the circles until they have the colour they want.
+    private void ColourCycler(object sender)
+    {
+        BoxView BV = (BoxView)sender;
+        
+        if(_colourNum == 0)
+        {
+            BV.Color = Colors.Red;
+        }
+        else if (_colourNum == 1)
+        {
+            BV.Color = Colors.Yellow;
+        }
+        else if(_colourNum == 2)
+        {
+            BV.Color = Colors.Green;
+        }
+        else if(_colourNum == 3)
+        {
+            BV.Color = Colors.Blue;
+        }
+        else if(_colourNum == 4)
+        {
+            BV.Color = Colors.Black;
+        }
+        else
+        {
+            BV.Color = Colors.White;
+        }
+
+        _colourNum++; 
+
+        if(_colourNum > _NUM_OF_COLOURS)
+        {
+            _colourNum = 0;
         }
     }
 }
