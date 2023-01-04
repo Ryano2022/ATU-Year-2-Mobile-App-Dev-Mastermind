@@ -69,14 +69,21 @@ public partial class MainPage : ContentPage
 
     private async void BtnSave_Clicked(object sender, EventArgs e)
     {
+        /* I tried looking at your example code but I just couldn't figure this out.
+         * I didnt get a class of you going through the example you put online since my class times were 
+         * taken up by an exam for the last 2 classes I had. (First being Procedural Programming and the
+         * second being the Mobile App Dev exam).
+         * I hope this doesn't drop my grade too much.
+        */
+
         bool answer = await DisplayAlert("Game File", "Would you like to save your game or load a previous save?", "Save", "Load");
         if (answer == true)
         {
-
+            await DisplayAlert("Save", "Not Implemented", "OK");
         }
         else
         {
-
+            await DisplayAlert("Load", "Not Implemented", "OK");
         }
     }
 
@@ -164,7 +171,7 @@ public partial class MainPage : ContentPage
     }
 
     // Move to the next row on the grid every time and add some boxviews.
-    private void NewRow()
+    private async void NewRow()
     {
         if (_boxviews == null) _boxviews = new List<BoxView>();
 
@@ -193,6 +200,11 @@ public partial class MainPage : ContentPage
             BtnConfirm.IsVisible = false;
             LblCode.IsVisible = true;
             SLCode.IsVisible = true;
+            bool answer = await DisplayAlert("Loss", "You lost! :( Would you like to restart?", "Yes", "No");
+            if (answer == true)
+            {
+                BtnRestart_Clicked(new object(), new EventArgs());
+            }
         }
 
         
@@ -335,7 +347,7 @@ public partial class MainPage : ContentPage
     private async void BlackOrWhite()
     {
         if (_BlackWhitePegs == null) _BlackWhitePegs = new List<BoxView>();
-        int blackPegs = 0, whitePegs = 0, blackAndWhitePegs;
+        int blackPegs = 0, whitePegs = 0;
 
         Grid BlackOrWhiteGrid = new Grid()
         {
