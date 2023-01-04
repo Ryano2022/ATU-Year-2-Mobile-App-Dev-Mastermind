@@ -91,11 +91,11 @@ public partial class MainPage : ContentPage
         BlackOrWhite();
         
         /* Below was used for testing.
-         * 
-         * Test0.Text = _guessedCode[0].ToString();
-         * Test1.Text = _guessedCode[1].ToString();
-         * Test2.Text = _guessedCode[2].ToString();
-         * Test3.Text = _guessedCode[3].ToString();
+        * 
+        * Test0.Text = _guessedCode[0].ToString();
+        * Test1.Text = _guessedCode[1].ToString();
+        * Test2.Text = _guessedCode[2].ToString();
+        * Test3.Text = _guessedCode[3].ToString();
         */
 
         NewRow();
@@ -358,6 +358,9 @@ public partial class MainPage : ContentPage
 
         if (_guessedCode.SequenceEqual(_code))
         {
+            BtnConfirm.IsVisible = false;
+            LblCode.IsVisible = true;
+            SLCode.IsVisible = true;
             await DisplayAlert("Victory", "You've cracked the code! Congratulations", "OK");
         }
         else
@@ -372,19 +375,40 @@ public partial class MainPage : ContentPage
             if (_guessedCode[2] == _code[0] || _guessedCode[2] == _code[1] || _guessedCode[2] == _code[3]) whitePegs++;
             if (_guessedCode[3] == _code[0] || _guessedCode[3] == _code[1] || _guessedCode[3] == _code[2]) whitePegs++;
 
-            if(blackPegs + whitePegs > 4)
+            if ((_guessedCode[0] == _code[0]) && (_guessedCode[0] == _code[1] || _guessedCode[0] == _code[2] || _guessedCode[0] == _code[3]))
             {
-                whitePegs--;
+                if (_guessedCode[0] == _code[1]) whitePegs--;
+                if (_guessedCode[0] == _code[2]) whitePegs--;
+                if (_guessedCode[0] == _code[3]) whitePegs--;
             }
+            if ((_guessedCode[1] == _code[1]) && (_guessedCode[1] == _code[0] || _guessedCode[1] == _code[2] || _guessedCode[1] == _code[3]))
+            {
+                if (_guessedCode[1] == _code[0]) whitePegs--;
+                if (_guessedCode[1] == _code[2]) whitePegs--;
+                if (_guessedCode[1] == _code[3]) whitePegs-- ;
+            }
+            if((_guessedCode[2] == _code[2]) && (_guessedCode[2] == _code[0] || _guessedCode[2] == _code[1] || _guessedCode[2] == _code[3]))
+            {
+                if (_guessedCode[2] == _code[0]) whitePegs--;
+                if (_guessedCode[2] == _code[1]) whitePegs--;
+                if (_guessedCode[2] == _code[3]) whitePegs--;
+            }
+            if ((_guessedCode[3] == _code[3]) && (_guessedCode[3] == _code[0] || _guessedCode[3] == _code[1] || _guessedCode[3] == _code[2]))
+            {
+                if (_guessedCode[3] == _code[0]) whitePegs--;
+                if (_guessedCode[3] == _code[1]) whitePegs--;
+                if (_guessedCode[3] == _code[2]) whitePegs--;
+            }
+            
 
             /* Below was used for testing.
-             * 
-             * Test4.Text = _code[0].ToString();
-             * Test5.Text = _code[1].ToString();
-             * Test6.Text = _code[2].ToString();
-             * Test7.Text = _code[3].ToString();
-             * Test8.Text = blackPegs.ToString();
-             * Test9.Text = whitePegs.ToString();
+            * 
+            * Test4.Text = _code[0].ToString();
+            * Test5.Text = _code[1].ToString();
+            * Test6.Text = _code[2].ToString();
+            * Test7.Text = _code[3].ToString();
+            * Test8.Text = blackPegs.ToString();
+            * Test9.Text = whitePegs.ToString();
             */
 
             for (int i = 0; i < 4; i++)
