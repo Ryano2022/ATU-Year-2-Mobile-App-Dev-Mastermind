@@ -67,8 +67,17 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void BtnSave_Clicked(object sender, EventArgs e)
+    private async void BtnSave_Clicked(object sender, EventArgs e)
     {
+        bool answer = await DisplayAlert("Game File", "Would you like to save your game or load a previous save?", "Save", "Load");
+        if (answer == true)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
     // Confirm button at bottom to confirm their guess.
@@ -80,10 +89,15 @@ public partial class MainPage : ContentPage
         _guessedCode[3] = -1;
         CodeGuess(_rowIncrement);
         BlackOrWhite();
-        Test0.Text = _guessedCode[0].ToString();
-        Test1.Text = _guessedCode[1].ToString();
-        Test2.Text = _guessedCode[2].ToString();
-        Test3.Text = _guessedCode[3].ToString();
+        
+        /* Below was used for testing.
+         * 
+         * Test0.Text = _guessedCode[0].ToString();
+         * Test1.Text = _guessedCode[1].ToString();
+         * Test2.Text = _guessedCode[2].ToString();
+         * Test3.Text = _guessedCode[3].ToString();
+        */
+
         NewRow();
         _colourNum = 1;
     }
@@ -342,7 +356,7 @@ public partial class MainPage : ContentPage
         BlackOrWhiteGrid.SetColumnSpan(BlackOrWhiteGrid, 2);
         GridGame.Children.Add(BlackOrWhiteGrid);
 
-        if (_guessedCode.Equals(_code))
+        if (_guessedCode.SequenceEqual(_code))
         {
             await DisplayAlert("Victory", "You've cracked the code! Congratulations", "OK");
         }
@@ -363,12 +377,15 @@ public partial class MainPage : ContentPage
                 whitePegs--;
             }
 
-            Test4.Text = _code[0].ToString();
-            Test5.Text = _code[1].ToString();
-            Test6.Text = _code[2].ToString();
-            Test7.Text = _code[3].ToString();
-            Test8.Text = blackPegs.ToString();
-            Test9.Text = whitePegs.ToString();
+            /* Below was used for testing.
+             * 
+             * Test4.Text = _code[0].ToString();
+             * Test5.Text = _code[1].ToString();
+             * Test6.Text = _code[2].ToString();
+             * Test7.Text = _code[3].ToString();
+             * Test8.Text = blackPegs.ToString();
+             * Test9.Text = whitePegs.ToString();
+            */
 
             for (int i = 0; i < 4; i++)
             {
